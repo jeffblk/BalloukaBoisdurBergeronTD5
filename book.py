@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 22 15:22:21 2022
 
-@author: arthu
-"""
 import itertools
-
 
 class Order:
     id_iter = itertools.count()
@@ -67,3 +61,4 @@ class Book:
         for j in range(len(self.buy_orders)):
             print("          BUY "+ self.buy_orders[j].quantity()+ "@"+ self.buy_orders[j].price()+ " id =", self.buy_orders[j].id()+"\n")
         print("-------------------------")
+
