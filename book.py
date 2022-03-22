@@ -40,15 +40,12 @@ class Book:
         self.print_infos(False, quantity, price, id)
         self.sell_orders.append(Order(quantity, price))
 
-    def sort_b(self):
+
+    def print_infos(self, buy,quantity,price,id):
         self.buy_orders.sort()
         self.buy_orders.reverse()
         self.sell_orders.sort()
         self.sell_orders.reverse()
-        
-
-    def print_infos(self, buy,quantity,price,id):
-        self.sort_book()
         
         if(buy):
             print("--- Insert BUY "+quantity, "@", price, " id =", id," on ", self.__name+"\n")
