@@ -4,6 +4,8 @@ Created on Tue Mar 22 15:22:21 2022
 
 @author: arthu
 """
+import itertools
+
 
 class Order:
     def __init__(self, quantity, price):
