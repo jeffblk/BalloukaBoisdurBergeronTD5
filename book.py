@@ -41,7 +41,16 @@ class Book:
         self.print_infos(False, quantity, price, id)
         self.sell_orders.append(Order(quantity, price))
 
-
+    def execute_order(self):
+        #check si nos ordres peuvent s'executer
+        for i in range(len(self.sell_orders)):
+            for j in range(len(self.buy_orders)):
+                if self.sell_orders[i].price <= self.buy_orders[j].price: #Si on trouve un acheteurs a notre prix ou plus
+                    #on execute notre ordre
+                    #A FAIRE
+                    ####
+                    print("EXECUTE ORDER")
+    
     def print_infos(self, buy,quantity,price,id):
         self.buy_orders.sort()
         self.buy_orders.reverse()
