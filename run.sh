@@ -16,5 +16,4 @@ echo "------------------------------------------------------------------"
 echo "The virtual environnement has been activated, running the code ..."
 python main.py
 echo "Process completed !"
-pause
-i
+read -p "Press any key to resume ..."
