@@ -111,7 +111,10 @@ class Book:
             print(self.buy_orders[j])
         
         print("-------------------------")
-
+        
+        self.pandas_display()
+    
+    
 
 
 def main():
@@ -122,6 +125,7 @@ def main():
     book.insert_buy(2, 11.0)
     book.insert_sell(1, 10.0)
     book.insert_sell(10, 10.0)
+  
 
 
 
