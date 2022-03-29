@@ -57,15 +57,15 @@ class Book:
        #check si nos ordres peuvent s'executer
        for i in range(len(self.sell_orders)):
            for j in range(len(self.buy_orders)):
-               #print(len(self.sell_orders),i,"sell")
-               #print(len(self.buy_orders),j)
+               print(self.buy_orders[j].price(),"sell")
+               print(self.sell_orders[i].price())
                if self.sell_orders[i].price() <= self.buy_orders[j].price(): #Si on trouve un acheteurs a notre prix ou plus
                    #on vend le plus possible
                    trade_quantity = min(self.sell_orders[i].quantity(),self.buy_orders[j].quantity())
                    trade_price = self.buy_orders[j].price()
-                   self.sell_orders[i].Execute(self.buy_orders[j]) #On execute
-                   self.remove_executed()
+                   self.sell_orders[i].Execute(self.buy_orders[j]) #On execute       
                    print("EXECUTE " + str(trade_quantity) + " @ " + str(trade_price) + " ON " + self.name )
+       self.remove_executed()
 
     # Inserting into the order book new orders    
     def insert_buy(self, quantity, price):
@@ -83,11 +83,11 @@ class Book:
         self.id_iter += 1
     
     
-    def remove_executed(self): #We remove all fully executed orders
-        for i in range(len(self.sell_orders)):
-            if self.sell_orders[i].quantity() == 0:
-                self.sell_orders.remove(self.sell_orders[i])
-        for j in range(len(self.buy_orders)):
+    def remove_executed(self): #We remove all fully executed order
+        for order in self.sell_orders:
+            if order.quantity() == 0:
+                self.sell_orders.remove(order)
+        for order in range(len(self.buy_orders)):
             if self.buy_orders[j].quantity()==0:
                 self.buy_orders.remove(self.buy_orders[j])
                 
