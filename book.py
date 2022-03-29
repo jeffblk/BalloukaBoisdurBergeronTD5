@@ -1,5 +1,5 @@
 
-
+import pandas as pd
 
 class Order:
     def __init__(self, type, quantity, price, id):
@@ -111,22 +111,37 @@ class Book:
         
         print("-------------------------")
         
-        self.pandas_display()
-    
-    
-
-
-def main():
-    book = Book("TEST")
-    book.insert_buy(10, 10.0)
-    book.insert_sell(120, 12.0)
-    book.insert_buy(5, 10.0)
-    book.insert_buy(2, 11.0)
-    book.insert_sell(1, 10.0)
-    book.insert_sell(10, 10.0)
   
+    
+    def create_dataframe(self):
+        # Contains "SELL" if it is a selling order and "BUY" if not
+        action_list = []
+
+        # The list of all the information
+        quantity_list = []
+        price_list = []
+        id_list = []
+      
+
+        # Creating the lists (with all the data)
+        for element in self.buy_orders:
+            action_list.append(element.type())
+             
+            quantity_list.append(element.quantity())
+            price_list.append(element.price())
+            id_list.append(element.id())
+            
+        for element in self.sell_orders:
+            action_list.append(element.type())
+             
+            quantity_list.append(element.quantity())
+            price_list.append(element.price())
+            id_list.append(element.id())
+
+        # Coverting the lists to a panda dataframe
+        data_to_be_converted = {  'ID': id_list, 'Action': action_list, 'Quantity': quantity_list,
+                                'Price': price_list}
+        df = pd.DataFrame(data=data_to_be_converted)
+        return df
 
 
-
-if __name__ == "__main__":    
-    main()
