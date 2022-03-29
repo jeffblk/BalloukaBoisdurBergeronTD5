@@ -29,7 +29,8 @@ class Order:
             self.quantity -= counterparty.quantity
             counterparty.quantity = 0
     
-    
+    def toString(self):
+        print("\t",self.type," ",self.quantity,"@",self.price," id = ",self.id)
 
 
 class Book:
@@ -95,10 +96,10 @@ class Book:
         print("Book on ", str(self.name))
         
         for i in range(len(self.sell_orders)):
-            print('\tSELL ',self.sell_orders[i].quantity(),'@',self.sell_orders[i].price(),' id = ',self.sell_orders[i].id())
+            print("\tSELL ",self.sell_orders[i].quantity(),"@",self.sell_orders[i].price()," id = ",self.sell_orders[i].id())
         
         for j in range(len(self.buy_orders)):
-            print('\tBUY ',self.buy_orders[j].quantity(),'@',self.buy_orders[j].price(),' id = ',self.buy_orders[j].id())
+            print("\tBUY ",self.buy_orders[j].quantity(),"@",self.buy_orders[j].price()," id = ",self.buy_orders[j].id())
         
         print("-------------------------")
 
