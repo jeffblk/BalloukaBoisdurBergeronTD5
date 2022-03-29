@@ -56,21 +56,21 @@ class Book:
                    self.remove_executed()
                    print("EXECUTE " + trade_quantity + " @ " + trade_price + " ON " + self.__name )
 
-    # Inserting into the order book new orders
-    def insert_order(self, type, quantity, price):
-        if type == "BUY":
-            self.buy_orders.append(Order("BUY",quantity, price,self.id_iter))
-        elif type == "SELL":
-            self.sell_orders.append(Order("SELL",quantity, price,self.id_iter))
-        else:
-            print("ORDER NOT VALID")
-            return
-        print("--- Insert ", str(type)," ", str(quantity), "@", str(price), " id =", str(self.id_iter)," on ", str(self.name))
+    # Inserting into the order book new orders    
+    def insert_buy(self, quantity, price):
+        self.buy_orders.append(Order("BUY",quantity, price,self.id_iter))
+        print("--- Insert BUY ", str(quantity), "@", str(price), " id =", str(self.id_iter)," on ", str(self.name))
         self.execute_order() #We try to execute the new order
         self.print_infos() #e print the order book
         self.id_iter += 1
-
-
+        
+    def insert_sell(self, quantity, price):
+        self.sell_orders.append(Order("SELL",quantity, price,self.id_iter))
+        print("--- Insert SELL ", str(quantity), "@", str(price), " id =", str(self.id_iter)," on ", str(self.name))
+        self.execute_order() #We try to execute the new order
+        self.print_infos() #e print the order book
+        self.id_iter += 1
+    
     
     def remove_executed(self): #We remove all fully executed orders
         for i in range(len(self.sell_orders)):
@@ -104,6 +104,10 @@ class Book:
 
 
 
-if __name__ == '__main__':
-    TEST = Book("TEST")
-    TEST.insert_order("SELL", 10, 10)
+def main():
+    book = Book("TEST")
+    book.insert_buy(10, 10.0)
+
+
+if __name__ == "__main__":    
+    main()
