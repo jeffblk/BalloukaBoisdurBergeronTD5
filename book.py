@@ -1,6 +1,5 @@
 
-import itertools
-import pandas as pd
+
 
 class Order:
     def __init__(self, type, quantity, price, id):
