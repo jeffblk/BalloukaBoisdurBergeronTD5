@@ -29,8 +29,8 @@ class Order:
             self.quantity -= counterparty.quantity
             counterparty.quantity = 0
     
-    def toString(self):
-        print("\t",self.type," ",self.quantity,"@",self.price," id = ",self.id)
+    def __str__(self):
+        return str("\t",self.type," ",self.quantity,"@",self.price," id = ",self.id)
 
 
 class Book:
